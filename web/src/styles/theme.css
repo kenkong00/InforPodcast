@@ -1,0 +1,293 @@
+/* ==========================================================================
+   主题换装系统 —— 每一套皮肤只覆盖下面这组变量，组件样式完全不写死颜色
+   ========================================================================== */
+
+:root {
+  --r-s: 9px;
+  --r-m: 14px;
+  --r-l: 22px;
+  --r-xl: 30px;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --header-h: 60px;
+  --dock-h: 78px;
+  --nav-w: 236px;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+  --mono: 'SF Mono', 'JetBrains Mono', Consolas, 'Courier New', monospace;
+
+  /* 旧组件的变量名沿用别名，避免两套写法打架 */
+  --border: var(--line);
+  --border-soft: var(--surface-2);
+  --panel: var(--surface-solid);
+  --muted: var(--text-3);
+  --accent-soft: var(--glow);
+  --radius: var(--r-s);
+}
+
+/* ---------- 1. 午夜霓虹（默认） ---------- */
+[data-theme='midnight'] {
+  --bg: #07080f;
+  --bg-a: rgba(124, 92, 255, .30);
+  --bg-b: rgba(34, 211, 238, .18);
+  --bg-c: rgba(236, 72, 153, .12);
+  --surface: rgba(255, 255, 255, .045);
+  --surface-2: rgba(255, 255, 255, .075);
+  --surface-solid: #12141f;
+  --line: rgba(255, 255, 255, .09);
+  --line-2: rgba(255, 255, 255, .16);
+  --text: #f2f4fb;
+  --text-2: #a9b0c7;
+  --text-3: #6c748c;
+  --accent: #8b6cff;
+  --accent-2: #22d3ee;
+  --on-accent: #ffffff;
+  --glow: rgba(139, 108, 255, .42);
+  --disc-1: #1c1d2e;
+  --disc-2: #0a0b13;
+  --shadow: 0 18px 50px rgba(0, 0, 0, .55);
+  --scrim: rgba(4, 5, 12, .62);
+  --scheme: dark;
+}
+
+/* ---------- 2. 极光 ---------- */
+[data-theme='aurora'] {
+  --bg: #04120f;
+  --bg-a: rgba(52, 211, 153, .26);
+  --bg-b: rgba(96, 165, 250, .20);
+  --bg-c: rgba(167, 139, 250, .14);
+  --surface: rgba(255, 255, 255, .05);
+  --surface-2: rgba(255, 255, 255, .085);
+  --surface-solid: #0c1c19;
+  --line: rgba(255, 255, 255, .1);
+  --line-2: rgba(255, 255, 255, .18);
+  --text: #eefaf5;
+  --text-2: #9fb8b0;
+  --text-3: #62786f;
+  --accent: #34d399;
+  --accent-2: #60a5fa;
+  --on-accent: #04160f;
+  --glow: rgba(52, 211, 153, .4);
+  --disc-1: #103029;
+  --disc-2: #05100d;
+  --shadow: 0 18px 50px rgba(0, 0, 0, .5);
+  --scrim: rgba(2, 10, 8, .62);
+  --scheme: dark;
+}
+
+/* ---------- 3. 落日大道 ---------- */
+[data-theme='sunset'] {
+  --bg: #150a14;
+  --bg-a: rgba(255, 107, 107, .28);
+  --bg-b: rgba(255, 184, 108, .22);
+  --bg-c: rgba(196, 92, 255, .16);
+  --surface: rgba(255, 255, 255, .055);
+  --surface-2: rgba(255, 255, 255, .09);
+  --surface-solid: #1e101c;
+  --line: rgba(255, 255, 255, .1);
+  --line-2: rgba(255, 255, 255, .18);
+  --text: #fff3ee;
+  --text-2: #c9a6a6;
+  --text-3: #8a6a70;
+  --accent: #ff6b6b;
+  --accent-2: #ffb86c;
+  --on-accent: #2a0a10;
+  --glow: rgba(255, 107, 107, .42);
+  --disc-1: #33141f;
+  --disc-2: #160810;
+  --shadow: 0 18px 50px rgba(0, 0, 0, .5);
+  --scrim: rgba(14, 5, 12, .64);
+  --scheme: dark;
+}
+
+/* ---------- 4. 赛博荧光 ---------- */
+[data-theme='cyber'] {
+  --bg: #000000;
+  --bg-a: rgba(204, 255, 0, .16);
+  --bg-b: rgba(0, 255, 157, .14);
+  --bg-c: rgba(255, 0, 128, .1);
+  --surface: rgba(255, 255, 255, .05);
+  --surface-2: rgba(255, 255, 255, .085);
+  --surface-solid: #0a0a0a;
+  --line: rgba(204, 255, 0, .16);
+  --line-2: rgba(204, 255, 0, .34);
+  --text: #f4ffe0;
+  --text-2: #9aa88a;
+  --text-3: #5f6b52;
+  --accent: #ccff00;
+  --accent-2: #00ff9d;
+  --on-accent: #0b1000;
+  --glow: rgba(204, 255, 0, .38);
+  --disc-1: #131a06;
+  --disc-2: #000000;
+  --shadow: 0 18px 50px rgba(0, 0, 0, .7);
+  --scrim: rgba(0, 0, 0, .72);
+  --scheme: dark;
+}
+
+/* ---------- 5. 深海 ---------- */
+[data-theme='ocean'] {
+  --bg: #030f1f;
+  --bg-a: rgba(56, 189, 248, .26);
+  --bg-b: rgba(129, 140, 248, .20);
+  --bg-c: rgba(34, 211, 238, .12);
+  --surface: rgba(255, 255, 255, .05);
+  --surface-2: rgba(255, 255, 255, .085);
+  --surface-solid: #0a1a2e;
+  --line: rgba(255, 255, 255, .1);
+  --line-2: rgba(255, 255, 255, .18);
+  --text: #eaf6ff;
+  --text-2: #98b3cc;
+  --text-3: #5d7590;
+  --accent: #38bdf8;
+  --accent-2: #818cf8;
+  --on-accent: #04121f;
+  --glow: rgba(56, 189, 248, .42);
+  --disc-1: #0d2740;
+  --disc-2: #030c18;
+  --shadow: 0 18px 50px rgba(0, 0, 0, .52);
+  --scrim: rgba(2, 8, 18, .64);
+  --scheme: dark;
+}
+
+/* ---------- 6. 摩卡 ---------- */
+[data-theme='mocha'] {
+  --bg: #120d0a;
+  --bg-a: rgba(245, 166, 35, .22);
+  --bg-b: rgba(232, 150, 122, .18);
+  --bg-c: rgba(180, 120, 80, .14);
+  --surface: rgba(255, 255, 255, .05);
+  --surface-2: rgba(255, 255, 255, .085);
+  --surface-solid: #1d1611;
+  --line: rgba(255, 236, 214, .11);
+  --line-2: rgba(255, 236, 214, .2);
+  --text: #fdf3e6;
+  --text-2: #c3ab92;
+  --text-3: #8a7460;
+  --accent: #f5a623;
+  --accent-2: #e8967a;
+  --on-accent: #2a1a06;
+  --glow: rgba(245, 166, 35, .4);
+  --disc-1: #2e2114;
+  --disc-2: #130d08;
+  --shadow: 0 18px 50px rgba(0, 0, 0, .52);
+  --scrim: rgba(12, 8, 5, .64);
+  --scheme: dark;
+}
+
+/* ---------- 7. 瓷白 ---------- */
+[data-theme='porcelain'] {
+  --bg: #f4f6fb;
+  --bg-a: rgba(79, 70, 229, .16);
+  --bg-b: rgba(6, 182, 212, .13);
+  --bg-c: rgba(236, 72, 153, .08);
+  --surface: rgba(255, 255, 255, .82);
+  --surface-2: rgba(255, 255, 255, .95);
+  --surface-solid: #ffffff;
+  --line: rgba(20, 26, 48, .1);
+  --line-2: rgba(20, 26, 48, .18);
+  --text: #171c2e;
+  --text-2: #5b6478;
+  --text-3: #98a0b3;
+  --accent: #4f46e5;
+  --accent-2: #0891b2;
+  --on-accent: #ffffff;
+  --glow: rgba(79, 70, 229, .3);
+  --disc-1: #e8ebf5;
+  --disc-2: #cfd6e8;
+  --shadow: 0 16px 44px rgba(24, 32, 60, .14);
+  --scrim: rgba(18, 22, 40, .34);
+  --scheme: light;
+}
+
+/* ---------- 8. 樱雪 ---------- */
+[data-theme='sakura'] {
+  --bg: #fdf5f8;
+  --bg-a: rgba(236, 72, 153, .18);
+  --bg-b: rgba(168, 85, 247, .14);
+  --bg-c: rgba(251, 146, 160, .12);
+  --surface: rgba(255, 255, 255, .82);
+  --surface-2: rgba(255, 255, 255, .95);
+  --surface-solid: #ffffff;
+  --line: rgba(70, 20, 50, .1);
+  --line-2: rgba(70, 20, 50, .18);
+  --text: #2a1220;
+  --text-2: #7c5a6c;
+  --text-3: #b295a5;
+  --accent: #ec4899;
+  --accent-2: #a855f7;
+  --on-accent: #ffffff;
+  --glow: rgba(236, 72, 153, .32);
+  --disc-1: #fbdce8;
+  --disc-2: #f3c9dd;
+  --shadow: 0 16px 44px rgba(80, 24, 56, .14);
+  --scrim: rgba(40, 12, 28, .34);
+  --scheme: light;
+}
+
+/* ==========================================================================
+   背景光斑：跟着主题走，播报时还会跟着音频轻微呼吸
+   ========================================================================== */
+/* z-index:-1 很关键：它是 fixed 定位元素，如果给 0 就会盖在静态内容之上，
+   因为定位元素绘制在非定位元素之后。放到 -1 才是「内容之下、页面之上」。 */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg);
+}
+.aurora::before,
+.aurora::after {
+  content: '';
+  position: absolute;
+  width: 62vw;
+  height: 62vw;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .9;
+  transition: opacity .8s var(--ease);
+}
+.aurora::before {
+  top: -22vw;
+  left: -14vw;
+  background: radial-gradient(circle, var(--bg-a) 0%, transparent 66%);
+  animation: drift-a 26s ease-in-out infinite alternate;
+}
+.aurora::after {
+  right: -18vw;
+  bottom: -26vw;
+  background: radial-gradient(circle, var(--bg-b) 0%, transparent 66%);
+  animation: drift-b 32s ease-in-out infinite alternate;
+}
+.aurora > i {
+  position: absolute;
+  width: 46vw;
+  height: 46vw;
+  left: 32vw;
+  top: 34vh;
+  border-radius: 50%;
+  filter: blur(100px);
+  background: radial-gradient(circle, var(--bg-c) 0%, transparent 68%);
+  animation: drift-c 38s ease-in-out infinite alternate;
+}
+
+@keyframes drift-a {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(8vw, 6vh, 0) scale(1.16); }
+}
+@keyframes drift-b {
+  0% { transform: translate3d(0, 0, 0) scale(1.1); }
+  100% { transform: translate3d(-9vw, -7vh, 0) scale(.94); }
+}
+@keyframes drift-c {
+  0% { transform: translate3d(0, 0, 0) scale(.9); opacity: .75; }
+  100% { transform: translate3d(-6vw, -10vh, 0) scale(1.2); opacity: 1; }
+}
+
+/* 减弱动态效果（系统偏好 / 用户手动关） */
+[data-motion='off'] .aurora::before,
+[data-motion='off'] .aurora::after,
+[data-motion='off'] .aurora > i { animation: none; }
+[data-motion='off'] .vinyl { animation: none !important; }

@@ -1,0 +1,11 @@
+[
+  { "wait": 4500 },
+  { "eval": "[...document.querySelectorAll('.nav-item')].find(e=>e.textContent.includes('AI 精选')).click(), 'go'" },
+  { "wait": 1600 },
+  { "eval": "(()=>{const out=[];document.querySelectorAll('.dg-left .form-grid label').forEach(l=>{const sp=l.querySelector(':scope > span');const s=l.querySelector('select');if(s&&sp)out.push(sp.textContent.trim()+' = '+s.options[s.selectedIndex].text)});return JSON.stringify(out)})()" },
+  { "eval": "JSON.stringify({ 生成前节目数: document.querySelectorAll('.drow').length, 首条: (document.querySelector('.drow .dtitle')||{}).textContent })" },
+  { "eval": "document.querySelector('.dg-go').click(), 'generate-clicked'" },
+  { "wait": 15000 },
+  { "eval": "JSON.stringify({ 生成后节目数: document.querySelectorAll('.drow').length, 最新标题: (document.querySelector('.drow .dtitle')||{}).textContent, 进度文字: (document.querySelector('.dg-stmsg')||{}).textContent || '(无)' })" },
+  { "shot": "04-after-generate.png" }
+]

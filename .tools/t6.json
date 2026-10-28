@@ -1,0 +1,13 @@
+[
+  { "eval": "'全文勾选=' + document.querySelector('.pl-set .chk input').checked + ' | 视频徽章数=' + document.querySelectorAll('.badge.video').length + ' | 卡片数=' + document.querySelectorAll('.card').length" },
+  { "eval": "(() => { const c=[...document.querySelectorAll('.card')].find(x=>x.querySelector('.badge.video')); c.querySelector('.play-mini').click(); return '播放视频条目: ' + c.id })()" },
+  { "wait": 3500 },
+  { "eval": "'视频播报: ' + document.querySelector('.pl-pos').textContent.trim().replace(/\\s+/g,' ') + ' | ' + document.querySelector('.tnum').textContent" },
+  { "eval": "document.querySelectorAll('.pl-ctrl button')[2].click(); '点 ⏭ 下一条'" },
+  { "wait": 4000 },
+  { "eval": "'下一条: ' + document.querySelector('.pl-pos').textContent.trim().replace(/\\s+/g,' ') + ' | ' + document.querySelector('.tnum').textContent + ' | 高亮=' + (document.querySelector('.card.speaking')?.id||'无')" },
+  { "eval": "document.querySelectorAll('.pl-ctrl button')[3].click(); '点 ■ 停止'" },
+  { "wait": 800 },
+  { "eval": "'停止后: ' + document.querySelector('.pl-pos').textContent.trim().replace(/\\s+/g,' ') + ' | 按钮=' + document.querySelector('.pbtn.main').textContent.trim() + ' | 高亮=' + (document.querySelector('.card.speaking')?.id||'无')" },
+  { "shot": "final.png" }
+]

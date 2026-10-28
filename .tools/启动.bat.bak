@@ -1,0 +1,69 @@
+@echo off
+
+title 信息聚合网站 - 启动器
+cd /d "%~dp0"
+
+echo ==============================================
+echo   信息聚合网站   http://localhost:5199
+echo ==============================================
+echo.
+
+rem ---- 0) 检查端口是否已经被占用（服务已在运行）----
+netstat -ano | findstr ":5199" | findstr "LISTENING" >nul
+if %errorlevel%==0 (
+  echo [检测] 端口 5199 已被占用 —— 服务已经在运行中。
+  echo        不再重复启动，直接为你打开浏览器。
+  echo.
+  start "" http://localhost:5199
+  echo 服务会在后台继续运行，本窗口可以关掉。
+  echo.
+  echo 按任意键关闭本窗口...
+  pause >nul
+  exit /b 0
+)
+
+rem ---- 1) 检查 Node ----
+where node >nul 2>nul
+if %errorlevel% neq 0 (
+  echo [错误] 没找到 node，请先安装 Node.js 后重试。
+  echo.
+  echo 按任意键关闭...
+  pause >nul
+  exit /b 1
+)
+
+rem ---- 2) 前端构建 ----
+if not exist "web\dist\index.html" (
+  echo [1/2] 首次启动，正在构建前端（约 10-30 秒）...
+  call npm run build
+  if %errorlevel% neq 0 (
+    echo [错误] 前端构建失败，请检查上面的报错。
+    echo.
+    echo 按任意键关闭...
+    pause >nul
+    exit /b 1
+  )
+) else (
+  echo [1/2] 前端已构建，跳过
+)
+
+rem ---- 3) 启动服务 ----
+echo [2/2] 启动服务（本窗口关闭 = 服务停止）...
+echo.
+start "" http://localhost:5199
+node server/index.js
+set RC=%errorlevel%
+
+echo.
+if "%RC%"=="0" (
+  echo 服务已正常退出。
+) else (
+  echo [错误] 服务异常退出，代码 %RC%
+  echo 常见原因：
+  echo   1. 端口 5199 被别的程序占用（刚才检测没占到，可能是启动瞬间冲突）
+  echo   2. Node 版本过低（需要 18 以上）
+  echo   3. 依赖缺失，可先执行一次：npm install
+)
+echo.
+echo 按任意键关闭本窗口...
+pause >nul
